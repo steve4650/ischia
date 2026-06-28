@@ -1,0 +1,29 @@
+[
+  {
+    "tags": "chrony",
+    "block": [
+      {
+        "name": "Copy chrony.conf into place",
+        "ansible.builtin.copy": {
+          "src": "chrony.conf",
+          "dest": "/etc/chrony.conf",
+          "owner": "root",
+          "group": "root",
+          "mode": "0644"
+        },
+        "register": "chronyconf",
+        "become": "yes"
+      },
+      {
+        "name": "Enable chronyd.service",
+        "ansible.builtin.systemd_service": {
+          "name": "chronyd",
+          "state": "restarted",
+          "enabled": true
+        },
+        "when": "chronyconf.changed",
+        "become": "yes"
+      }
+    ]
+  }
+]

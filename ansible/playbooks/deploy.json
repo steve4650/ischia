@@ -1,0 +1,16 @@
+[
+  {
+    "name": "ischia deployment",
+    "hosts": "targets",
+    "strategy": "free",
+    "roles": [
+      { "name": "users" },
+      { "name": "sshd" },
+      { "name": "chrony" },
+      { "name": "dnf" },
+      { "name": "andromeda" },
+      { "name": "deploy_website" },
+      { "name": "caddy" }
+    ]
+  }
+]

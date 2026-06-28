@@ -1,0 +1,35 @@
+[
+  {
+    "tags": "caddy",
+    "block": [
+      {
+        "name": "Load secret variables",
+        "ansible.builtin.include_vars": {
+          "file": "{{ playbook_dir }}/../../.secrets.json"
+        },
+        "become": "yes"
+      },
+      {
+        "name": "Render Caddyfile from template",
+        "ansible.builtin.template": {
+          "src": "Caddyfile",
+          "dest": "/etc/caddy/Caddyfile",
+          "owner": "root",
+          "group": "root"
+        },
+        "register": "caddyfile",
+        "become": "yes"
+      },
+      {
+        "name": "Enable caddy.service",
+        "ansible.builtin.systemd_service": {
+          "name": "caddy",
+          "state": "restarted",
+          "enabled": true
+        },
+        "when": "caddyfile.changed",
+        "become": "yes"
+      }
+    ]
+  }
+]

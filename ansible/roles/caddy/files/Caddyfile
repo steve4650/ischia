@@ -1,0 +1,7 @@
+{
+	admin off
+}
+
+http://192.168.1.82 {
+	reverse_proxy * localhost:40000
+}

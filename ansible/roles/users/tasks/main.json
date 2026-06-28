@@ -1,0 +1,16 @@
+[
+  {
+    "tags": "users",
+    "block": [
+      {
+        "name": "Create steve user in wheel group",
+        "ansible.builtin.user": {
+          "name": "steve",
+          "groups": "wheel",
+          "append": true
+        },
+        "become": "yes"
+      }
+    ]
+  }
+]
