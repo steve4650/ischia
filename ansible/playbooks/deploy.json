@@ -4,6 +4,7 @@
     "hosts": "targets",
     "strategy": "free",
     "roles": [
+      { "name": "apk" },
       { "name": "users" },
       { "name": "sshd" },
       { "name": "ntp" },

@@ -3,13 +3,12 @@
     "tags": "dnf",
     "block": [
       {
-        "name": "Install DNF packages",
+        "name": "Install apk packages",
         "ansible.builtin.package": {
-          "name": ["chrony", "caddy", "wireguard-tools"],
+          "name": ["chrony", "caddy", "wireguard-tools", "git", "rsync"],
           "state": "present"
         },
-        "become": "yes",
-        "when": "ansible_facts['os_family']|lower == 'redhat'"
+        "become": "yes"
       }
     ]
   }
