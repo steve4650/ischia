@@ -21,8 +21,8 @@
         "become": "yes"
       },
       {
-        "name": "Enable caddy.service",
-        "ansible.builtin.systemd_service": {
+        "name": "Enable caddy service",
+        "ansible.builtin.service": {
           "name": "caddy",
           "state": "restarted",
           "enabled": true

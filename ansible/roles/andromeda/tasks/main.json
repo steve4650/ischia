@@ -47,28 +47,23 @@
         "become": "yes"
       },
       {
-        "name": "Create andromeda systemd service",
+        "name": "Create andromeda OpenRC service",
         "ansible.builtin.copy": {
-          "dest": "/etc/systemd/system/andromeda.service",
-          "content": "[Unit]\nDescription=Andromeda WireGuard VPN\nAfter=network.target\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\nExecStart=/usr/bin/wg-quick up /etc/wireguard/andromeda.conf\nExecStop=/usr/bin/wg-quick down /etc/wireguard/andromeda.conf\n\n[Install]\nWantedBy=multi-user.target\n",
-          "mode": "0600",
+          "dest": "/etc/init.d/andromeda",
+          "content": "#!/sbin/openrc-run\ndescription=\"Andromeda WireGuard VPN\"\n\ndepend() {\n    need net\n    use dns\n}\n\nstart() {\n    ebegin \"Starting andromeda\"\n    /usr/bin/wg-quick up /etc/wireguard/andromeda.conf\n    eend $?\n}\n\nstop() {\n    ebegin \"Stopping andromeda\"\n    /usr/bin/wg-quick down /etc/wireguard/andromeda.conf\n    eend $?\n}\n",
+          "mode": "0755",
           "owner": "root",
-          "group": "root",
-          "seuser": "unconfined_u",
-          "serole": "object_r",
-          "setype": "systemd_unit_file_t",
-          "selevel": "s0"
+          "group": "root"
         },
         "register": "andromeda_service",
         "become": "yes"
       },
       {
-        "name": "Enable and start andromeda.service",
-        "ansible.builtin.systemd": {
-          "name": "andromeda.service",
+        "name": "Enable and start andromeda service",
+        "ansible.builtin.service": {
+          "name": "andromeda",
           "enabled": true,
-          "state": "started",
-          "daemon_reload": true
+          "state": "started"
         },
         "when": "andromeda_service.changed",
         "become": "yes"
