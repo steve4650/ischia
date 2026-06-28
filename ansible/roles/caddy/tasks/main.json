@@ -3,15 +3,8 @@
     "tags": "caddy",
     "block": [
       {
-        "name": "Load secret variables",
-        "ansible.builtin.include_vars": {
-          "file": "{{ playbook_dir }}/../../.secrets.json"
-        },
-        "become": "yes"
-      },
-      {
         "name": "Render Caddyfile from template",
-        "ansible.builtin.template": {
+        "ansible.builtin.copy": {
           "src": "Caddyfile",
           "dest": "/etc/caddy/Caddyfile",
           "owner": "root",
