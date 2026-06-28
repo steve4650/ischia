@@ -12,6 +12,6 @@ GSSAPICleanupCredentials no
 X11Forwarding no
 PrintMotd no
 AllowUsers steve
-Subsystem	sftp	/usr/libexec/openssh/sftp-server
+Subsystem	sftp	internal-sftp
 
 Include /etc/ssh/sshd_config.d/*.conf
