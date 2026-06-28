@@ -1,27 +1,27 @@
 [
   {
-    "tags": "chrony",
+    "tags": "ntp",
     "block": [
       {
-        "name": "Copy chrony.conf into place",
+        "name": "Copy ntp.conf into place",
         "ansible.builtin.copy": {
-          "src": "chrony.conf",
-          "dest": "/etc/chrony.conf",
+          "src": "ntp.conf",
+          "dest": "/etc/ntp.conf",
           "owner": "root",
           "group": "root",
           "mode": "0644"
         },
-        "register": "chronyconf",
+        "register": "ntpconf",
         "become": "yes"
       },
       {
-        "name": "Enable chronyd service",
+        "name": "Enable ntpd service",
         "ansible.builtin.service": {
-          "name": "chronyd",
+          "name": "ntpd",
           "state": "restarted",
           "enabled": true
         },
-        "when": "chronyconf.changed",
+        "when": "ntpconf.changed",
         "become": "yes"
       }
     ]

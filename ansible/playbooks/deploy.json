@@ -6,7 +6,7 @@
     "roles": [
       { "name": "users" },
       { "name": "sshd" },
-      { "name": "chrony" },
+      { "name": "ntp" },
       { "name": "andromeda" },
       { "name": "caddy" }
     ]
