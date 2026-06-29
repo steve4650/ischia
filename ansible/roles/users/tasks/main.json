@@ -10,7 +10,14 @@
           "append": true
         },
         "become": "yes"
+      },      {
+        "name": "Create gnuplex",
+        "ansible.builtin.user": {
+          "name": "gnuplex"
+        },
+        "become": "yes"
       }
+
     ]
   }
 ]

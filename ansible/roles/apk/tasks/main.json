@@ -5,7 +5,7 @@
       {
         "name": "Install apk packages",
         "ansible.builtin.package": {
-          "name": ["chrony", "caddy", "wireguard-tools", "git", "rsync"],
+          "name": ["chrony", "caddy", "wireguard-tools", "git", "rsync", "sway", "firefox"],
           "state": "present"
         },
         "become": "yes"
