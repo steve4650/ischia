@@ -1,0 +1,62 @@
+[
+  {
+    "tags": "gnuplex_display",
+    "block": [
+      {
+        "name": "Create ~/.local directory",
+        "ansible.builtin.file": {
+          "path": "/home/gnuplex/.local",
+          "state": "directory",
+          "mode": "0775",
+          "owner": "gnuplex",
+          "group": "gnuplex"
+        },
+        "become": "yes"
+      },
+      {
+        "name": "Create ~/.local/bin directory",
+        "ansible.builtin.file": {
+          "path": "/home/gnuplex/.local/bin",
+          "state": "directory",
+          "mode": "0775",
+          "owner": "gnuplex",
+          "group": "gnuplex"
+        },
+        "become": "yes"
+      },
+      {
+        "name": "Install gnuplex statusbar script",
+        "ansible.builtin.copy": {
+          "src": "statusbar",
+          "dest": "/home/gnuplex/.local/bin/statusbar",
+          "owner": "gnuplex",
+          "group": "gnuplex",
+          "mode": "0744"
+        },
+        "become": "yes"
+      },
+      {
+        "name": "Install gnuplex sway-run script",
+        "ansible.builtin.copy": {
+          "src": "sway-run",
+          "dest": "/home/gnuplex/.local/bin/sway-run",
+          "owner": "gnuplex",
+          "group": "gnuplex",
+          "mode": "0744"
+        },
+        "become": "yes"
+      },
+      {
+        "name": "Install gnuplex wallpaper script",
+        "ansible.builtin.copy": {
+          "src": "wallpaper",
+          "dest": "/home/gnuplex/.local/bin/wallpaper",
+          "owner": "gnuplex",
+          "group": "gnuplex",
+          "mode": "0744"
+        },
+        "become": "yes"
+      }
+    ]
+  }
+]
