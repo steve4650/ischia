@@ -7,7 +7,7 @@
         "ansible.builtin.file": {
           "path": "/home/gnuplex/.local",
           "state": "directory",
-          "mode": "0775",
+          "mode": "0755",
           "owner": "gnuplex",
           "group": "gnuplex"
         },
@@ -18,7 +18,7 @@
         "ansible.builtin.file": {
           "path": "/home/gnuplex/.local/bin",
           "state": "directory",
-          "mode": "0775",
+          "mode": "0755",
           "owner": "gnuplex",
           "group": "gnuplex"
         },

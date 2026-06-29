@@ -9,7 +9,8 @@
       { "name": "sshd" },
       { "name": "ntp" },
       { "name": "andromeda" },
-      { "name": "caddy" }
+      { "name": "caddy" },
+      { "name": "gnuplex_display" }
     ]
   }
 ]
